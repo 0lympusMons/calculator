@@ -1,1 +1,37 @@
-/*# sourceMappingURL=style.css.map */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  border: 0;
+}
+
+.wrapper__calculator {
+  background-color: red;
+  margin: auto;
+  border: 1em solid black;
+  border-radius: 1em;
+}
+.wrapper__calculator--display {
+  background-color: aqua;
+}
+.wrapper__calculator--numbers {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.wrapper__calculator--numbers .rows {
+  display: flex;
+}
+.wrapper__calculator--numbers .rows li {
+  padding: 0.5em;
+}/*# sourceMappingURL=style.css.map */
