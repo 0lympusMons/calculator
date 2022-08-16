@@ -24,14 +24,15 @@ body {
 .wrapper__calculator--display {
   background-color: aqua;
 }
-.wrapper__calculator--numbers {
+.wrapper__calculator--buttons {
   list-style: none;
   display: flex;
   flex-direction: column;
 }
-.wrapper__calculator--numbers .rows {
+.wrapper__calculator--buttons .rows {
   display: flex;
 }
-.wrapper__calculator--numbers .rows li {
+.wrapper__calculator--buttons .rows li {
   padding: 0.5em;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
