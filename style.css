@@ -23,6 +23,7 @@ body {
 }
 .wrapper__calculator--display {
   background-color: aqua;
+  height: 1.2em;
 }
 .wrapper__calculator--buttons {
   list-style: none;

@@ -2,6 +2,8 @@ let display = document.querySelector(".wrapper__calculator--display");
 
 let buttons = document.querySelectorAll(".button");
 
+let decimalExists = false;
+
 buttons.forEach(button => button.addEventListener("click", buttonClick));
 
 
@@ -17,17 +19,19 @@ function buttonClick(e) {
         display.textContent += number;
     } else if (e.target.className === 'button delete') {
         del();
-    }
+    } else if( e.target.className === 'button decimal'){
+        decimal();
+    };
 
 
 }
 
 function del() {
-    //should not remove display
-    //should not delete letters of 'display'
+
     if(display.textContent === 'Display'){
         //do nothing
     }else{
+
         let lastChar = display.textContent.length - 1;
 
         if(lastChar>=1){
@@ -35,12 +39,21 @@ function del() {
 
         }else if(lastChar==0){
             // display.textContent = display.textContent.slice(0, lastChar);
-            display.textContent = 'Display';
+            display.textContent = '';
 
         }
     }
 
 }
+
+function decimal(){
+   if (decimalExists){
+        //do nothing
+   }else{
+        display.textContent += '.';
+        decimalExists = true;
+   };
+};
 
 function displayIsEmpty() {
 
