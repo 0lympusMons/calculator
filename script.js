@@ -19,25 +19,111 @@ function buttonClick(e) {
         display.textContent += number;
     } else if (e.target.className === 'button delete') {
         del();
-    } else if( e.target.className === 'button decimal'){
+    } else if (e.target.className === 'button decimal') {
         decimal();
+    } else if (e.target.className === 'button plus') {
+        if (!(isRepeatingOperations())) {
+            plus();
+
+        }
+    } else if (e.target.className === 'button minus') {
+        if (!(isRepeatingOperations())) {
+            minus();
+        }
+    } else if (e.target.className === 'button multiply') {
+        if (!(isRepeatingOperations())) {
+            multiply();
+        }
+    } else if (e.target.className === 'button divide') {
+        if (!(isRepeatingOperations())) {
+            divide();
+        }
+    }
+    else if (e.target.className === 'button equals') {
+        equals();
     };
 
 
 }
 
+function multiply() {
+
+    if (display.textContent === 'Display') {
+        //do nothing
+    } else {
+        display.textContent += '*';
+    }
+
+}
+
+function divide() {
+    if (display.textContent === 'Display') {
+        //do nothing
+    } else {
+        display.textContent += '\u00F7';
+
+    }
+}
+
+function equals() {
+
+    let numbersInExpression = display.textContent.split('+').join(', ').split('-').join(', ').split('*').join(', ').split('\u00F7').join(', ').split(', ');
+    let operatorsInExpressionIndex = 0;
+
+    console.log(`numbersInExpression: ${numbersInExpression}`);
+    console.log(`Index: ${operatorsInExpressionIndex}`);
+
+
+    let operatorsInExpression = display.textContent.split('').filter(x => {
+
+        return (x == '+' || x == '-' || x == '*' || x == '\u00F7');
+    });
+
+    console.log(`operatorsInExpression: ${operatorsInExpression}`);
+
+
+    let result = numbersInExpression.reduce((sum, num) => {
+        if (operatorsInExpression[operatorsInExpressionIndex] == '+') {
+
+            operatorsInExpressionIndex++;
+            return sum = Number(sum) + Number(num);
+
+        } else if (operatorsInExpression[operatorsInExpressionIndex] == '-') {
+            operatorsInExpressionIndex++;
+            return sum = Number(sum) - Number(num);
+
+        } else if (operatorsInExpression[operatorsInExpressionIndex] == '*') {
+            //di mogana kung i equals wtf
+            operatorsInExpressionIndex++;
+            console.log("huy");
+            return sum = Number(sum) * Number(num);
+
+        } else if (operatorsInExpression[operatorsInExpressionIndex] == '\u00F7') {
+
+            operatorsInExpressionIndex++;
+            return sum = Number(sum) / Number(num);
+
+        } else if (operatorsInExpression[operatorsInExpressionIndex++] == undefined) {
+            console.log('undefined');
+        };
+    });
+
+    display.textContent = result;
+    return result;
+};
+
 function del() {
 
-    if(display.textContent === 'Display'){
+    if (display.textContent === 'Display') {
         //do nothing
-    }else{
+    } else {
 
         let lastChar = display.textContent.length - 1;
 
-        if(lastChar>=1){
+        if (lastChar >= 1) {
             display.textContent = display.textContent.slice(0, lastChar);
 
-        }else if(lastChar==0){
+        } else if (lastChar == 0) {
             // display.textContent = display.textContent.slice(0, lastChar);
             display.textContent = '';
 
@@ -46,13 +132,42 @@ function del() {
 
 }
 
-function decimal(){
-   if (decimalExists){
+function plus() {
+
+    if (display.textContent === 'Display') {
         //do nothing
-   }else{
+    } else {
+        display.textContent += '+';
+    }
+}
+
+function minus() {
+    if (display.textContent === 'Display') {
+        //do nothing
+    } else {
+        display.textContent += '-';
+    }
+}
+
+function isRepeatingOperations() {
+    let lastCharIndex = display.textContent.length - 1;
+    let lastCharOfDisplay = display.textContent.charAt(lastCharIndex);
+    console.log(lastCharOfDisplay);
+
+    if (lastCharOfDisplay == '+' || lastCharOfDisplay == '-') {
+        return true;
+    }
+
+    return false;
+};
+
+function decimal() {
+    if (decimalExists) {
+        //do nothing
+    } else {
         display.textContent += '.';
         decimalExists = true;
-   };
+    };
 };
 
 function displayIsEmpty() {
