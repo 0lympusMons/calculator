@@ -123,7 +123,7 @@ function del() {
             display.textContent = display.textContent.slice(0, lastChar);
 
         } else if (lastChar == 0) {
-            // display.textContent = display.textContent.slice(0, lastChar);
+
             display.textContent = '';
 
         }
@@ -153,7 +153,7 @@ function isRepeatingOperations() {
     let lastCharOfDisplay = display.textContent.charAt(lastCharIndex);
     console.log(lastCharOfDisplay);
 
-    if (lastCharOfDisplay == '+' || lastCharOfDisplay == '-') {
+    if (lastCharOfDisplay == '+' || lastCharOfDisplay == '-' ||lastCharOfDisplay == '*' || lastCharOfDisplay == '\u00F7') {
         return true;
     }
 
