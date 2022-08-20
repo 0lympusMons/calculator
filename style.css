@@ -6,6 +6,7 @@ body {
 body {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 *,
@@ -14,6 +15,7 @@ body {
   margin: 0;
   border: 0;
   box-sizing: border-box;
+  font-family: Arial;
 }
 
 .wrapper__calculator {
@@ -92,4 +94,15 @@ body {
 .wrapper__calculator--buttons .third-row li:nth-child(5) {
   width: 15%;
   flex-shrink: 0;
+}
+
+footer {
+  display: flex;
+  margin: 0 auto;
+  padding-bottom: 1em;
+  align-items: center;
+}
+footer img {
+  height: 20px;
+  margin-left: 0.5em;
 }/*# sourceMappingURL=style.css.map */

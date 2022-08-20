@@ -18,29 +18,40 @@ function buttonClick(e) {
         let number = e.target.textContent;
         display.textContent += number;
 
-        if(countNumbers()%2 == 0){
-            equals();
-        }
+
 
     } else if (e.target.className === 'button delete') {
         del();
     } else if (e.target.className === 'button decimal') {
+
         decimal();
     } else if (e.target.className === 'button plus') {
         if (!(isRepeatingOperations())) {
+            if (countNumbers() % 2 == 0) {
+                equals();
+            }
             plus();
 
         }
     } else if (e.target.className === 'button minus') {
         if (!(isRepeatingOperations())) {
+            if (countNumbers() % 2 == 0) {
+                equals();
+            }
             minus();
         }
     } else if (e.target.className === 'button multiply') {
         if (!(isRepeatingOperations())) {
+            if (countNumbers() % 2 == 0) {
+                equals();
+            }
             multiply();
         }
     } else if (e.target.className === 'button divide') {
         if (!(isRepeatingOperations())) {
+            if (countNumbers() % 2 == 0) {
+                equals();
+            }
             divide();
         }
     }
@@ -70,20 +81,23 @@ function divide() {
     }
 }
 
-function operate(){
+
+function countNumbers() {
+
+    return convertDisplayContentToArray().length;
 
 }
 
-function countNumbers(){
-    let numbersInExpression = display.textContent.split('+').join(', ').split('-').join(', ').split('*').join(', ').split('\u00F7').join(', ').split(', ');
+function convertDisplayContentToArray() {
 
-    return numbersInExpression.length;
+    return display.textContent.split('+').join(', ').split('-').join(', ').split('*').join(', ').split('\u00F7').join(', ').split(', ');
+
 }
 
 function equals() {
 
     //convert numbers to array
-    let numbersInExpression = display.textContent.split('+').join(', ').split('-').join(', ').split('*').join(', ').split('\u00F7').join(', ').split(', ');
+    let numbersInExpression = convertDisplayContentToArray();
 
     console.log(`numbersInExpression: ${numbersInExpression}`);
 
@@ -130,9 +144,9 @@ function del() {
 
     if (display.textContent === 'Display') {
         //do nothing
-    } else if(display.textContent === 'Infinity'){
+    } else if (display.textContent === 'Infinity') {
         display.textContent = '';
-    }else {
+    } else {
 
         let lastChar = display.textContent.length - 1;
 
@@ -170,7 +184,7 @@ function isRepeatingOperations() {
     let lastCharOfDisplay = display.textContent.charAt(lastCharIndex);
     console.log(lastCharOfDisplay);
 
-    if (lastCharOfDisplay == '+' || lastCharOfDisplay == '-' ||lastCharOfDisplay == '*' || lastCharOfDisplay == '\u00F7') {
+    if (lastCharOfDisplay == '+' || lastCharOfDisplay == '-' || lastCharOfDisplay == '*' || lastCharOfDisplay == '\u00F7') {
         return true;
     }
 
