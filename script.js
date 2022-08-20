@@ -73,7 +73,6 @@ function equals() {
     console.log(`numbersInExpression: ${numbersInExpression}`);
     console.log(`Index: ${operatorsInExpressionIndex}`);
 
-
     let operatorsInExpression = display.textContent.split('').filter(x => {
 
         return (x == '+' || x == '-' || x == '*' || x == '\u00F7');

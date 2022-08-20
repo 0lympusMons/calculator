@@ -18,22 +18,39 @@ body {
 .wrapper__calculator {
   background-color: red;
   margin: auto;
-  border: 1em solid black;
+  border: 0.5em solid black;
   border-radius: 1em;
+  width: 300px;
+  height: 400px;
 }
 .wrapper__calculator--display {
   background-color: aqua;
-  height: 1.2em;
+  height: 10%;
 }
 .wrapper__calculator--buttons {
+  height: 90%;
   list-style: none;
   display: flex;
   flex-direction: column;
 }
 .wrapper__calculator--buttons .rows {
   display: flex;
+  margin: auto 0;
+  height: 90%;
 }
 .wrapper__calculator--buttons .rows li {
-  padding: 0.5em;
   cursor: pointer;
+  margin: auto;
+  text-align: center;
+}
+.wrapper__calculator--buttons .rows li:nth-child(1), .wrapper__calculator--buttons .rows li:nth-child(2), .wrapper__calculator--buttons .rows li:nth-child(3) {
+  width: 50%;
+}
+.wrapper__calculator--buttons .first-row li:nth-child(4), .wrapper__calculator--buttons .fourth-row li:nth-child(4) {
+  width: 30%;
+  flex-shrink: 0;
+}
+.wrapper__calculator--buttons .second-row li:nth-child(4), .wrapper__calculator--buttons .second-row li:nth-child(5), .wrapper__calculator--buttons .third-row li:nth-child(4), .wrapper__calculator--buttons .third-row li:nth-child(5) {
+  width: 15%;
+  flex-shrink: 0;
 }/*# sourceMappingURL=style.css.map */
