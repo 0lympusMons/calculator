@@ -13,19 +13,27 @@ body {
 *::after {
   margin: 0;
   border: 0;
+  box-sizing: border-box;
 }
 
 .wrapper__calculator {
-  background-color: red;
+  background-color: #55524D;
   margin: auto;
-  border: 0.5em solid black;
+  padding: 1em;
+  border: 3px solid black;
   border-radius: 1em;
   width: 300px;
-  height: 400px;
+  height: 350px;
 }
 .wrapper__calculator--display {
-  background-color: aqua;
+  background-color: #CFE3E4;
   height: 10%;
+  margin: 0.5em;
+  padding-left: 0.5em;
+  border: 2px solid black;
+  border-radius: 0.5em;
+  display: flex;
+  align-items: center;
 }
 .wrapper__calculator--buttons {
   height: 90%;
@@ -38,19 +46,40 @@ body {
   margin: auto 0;
   height: 90%;
 }
+.wrapper__calculator--buttons .rows .button {
+  background-color: #413f3a;
+  border: 3px solid black;
+  border-radius: 0.5em;
+  padding: 0.5em 0;
+}
 .wrapper__calculator--buttons .rows li {
   cursor: pointer;
   margin: auto;
+  color: white;
   text-align: center;
 }
-.wrapper__calculator--buttons .rows li:nth-child(1), .wrapper__calculator--buttons .rows li:nth-child(2), .wrapper__calculator--buttons .rows li:nth-child(3) {
+.wrapper__calculator--buttons .rows li:nth-child(1),
+.wrapper__calculator--buttons .rows li:nth-child(2),
+.wrapper__calculator--buttons .rows li:nth-child(3) {
   width: 50%;
 }
-.wrapper__calculator--buttons .first-row li:nth-child(4), .wrapper__calculator--buttons .fourth-row li:nth-child(4) {
+.wrapper__calculator--buttons .first-row li,
+.wrapper__calculator--buttons .fourth-row li {
+  margin: auto 0.25em;
+}
+.wrapper__calculator--buttons .second-row li,
+.wrapper__calculator--buttons .third-row li {
+  margin: auto 0.25em;
+}
+.wrapper__calculator--buttons .first-row li:nth-child(4),
+.wrapper__calculator--buttons .fourth-row li:nth-child(4) {
   width: 30%;
   flex-shrink: 0;
 }
-.wrapper__calculator--buttons .second-row li:nth-child(4), .wrapper__calculator--buttons .second-row li:nth-child(5), .wrapper__calculator--buttons .third-row li:nth-child(4), .wrapper__calculator--buttons .third-row li:nth-child(5) {
+.wrapper__calculator--buttons .second-row li:nth-child(4),
+.wrapper__calculator--buttons .second-row li:nth-child(5),
+.wrapper__calculator--buttons .third-row li:nth-child(4),
+.wrapper__calculator--buttons .third-row li:nth-child(5) {
   width: 15%;
   flex-shrink: 0;
 }/*# sourceMappingURL=style.css.map */
