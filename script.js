@@ -17,6 +17,11 @@ function buttonClick(e) {
 
         let number = e.target.textContent;
         display.textContent += number;
+
+        if(countNumbers()%2 == 0){
+            equals();
+        }
+
     } else if (e.target.className === 'button delete') {
         del();
     } else if (e.target.className === 'button decimal') {
@@ -65,21 +70,32 @@ function divide() {
     }
 }
 
+function operate(){
+
+}
+
+function countNumbers(){
+    let numbersInExpression = display.textContent.split('+').join(', ').split('-').join(', ').split('*').join(', ').split('\u00F7').join(', ').split(', ');
+
+    return numbersInExpression.length;
+}
+
 function equals() {
 
+    //convert numbers to array
     let numbersInExpression = display.textContent.split('+').join(', ').split('-').join(', ').split('*').join(', ').split('\u00F7').join(', ').split(', ');
-    let operatorsInExpressionIndex = 0;
 
     console.log(`numbersInExpression: ${numbersInExpression}`);
-    console.log(`Index: ${operatorsInExpressionIndex}`);
 
+    //convert operators to array
     let operatorsInExpression = display.textContent.split('').filter(x => {
 
         return (x == '+' || x == '-' || x == '*' || x == '\u00F7');
     });
+    let operatorsInExpressionIndex = 0;
 
     console.log(`operatorsInExpression: ${operatorsInExpression}`);
-
+    console.log(`Index: ${operatorsInExpressionIndex}`);
 
     let result = numbersInExpression.reduce((sum, num) => {
         if (operatorsInExpression[operatorsInExpressionIndex] == '+') {
@@ -92,9 +108,8 @@ function equals() {
             return sum = Number(sum) - Number(num);
 
         } else if (operatorsInExpression[operatorsInExpressionIndex] == '*') {
-            //di mogana kung i equals wtf
+
             operatorsInExpressionIndex++;
-            console.log("huy");
             return sum = Number(sum) * Number(num);
 
         } else if (operatorsInExpression[operatorsInExpressionIndex] == '\u00F7') {
@@ -115,7 +130,9 @@ function del() {
 
     if (display.textContent === 'Display') {
         //do nothing
-    } else {
+    } else if(display.textContent === 'Infinity'){
+        display.textContent = '';
+    }else {
 
         let lastChar = display.textContent.length - 1;
 
