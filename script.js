@@ -11,8 +11,6 @@ document.addEventListener("keydown", handleKeydown);
 function handleKeydown(e) {
     console.log(e.key);
     operate("keydown", e.key, e.key);
-
-
 }
 
 function buttonClick(e) {
@@ -29,7 +27,7 @@ function buttonClick(e) {
 function operate(type, action, content) {
 
     let option = {
-        keydown: function (action, content) {
+        keydown: function () {
             if (action >= 0 && action <= 9) {
                 display.textContent += action;
             } else if (action == '+') {
@@ -72,7 +70,7 @@ function operate(type, action, content) {
                 del();
             }
         },
-        click: function (action, content) {
+        click: function () {
             if (action === 'button number') {
 
                 if (displayIsEmpty()) {
