@@ -33,6 +33,8 @@ body {
   min-height: 4em;
   width: 90%;
   flex-wrap: wrap;
+  text-align: right;
+  justify-content: end;
   overflow-wrap: anywhere;
   overflow: auto;
   margin: 0.5em;
