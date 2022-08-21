@@ -68,6 +68,8 @@ function buttonClick(e) {
 
     } else if (e.target.className === 'button delete') {
         del();
+    } else if(e.target.className === 'button clear'){
+        clear();
     } else if (e.target.className === 'button decimal') {
 
         decimal();
@@ -106,6 +108,10 @@ function buttonClick(e) {
     };
 
 
+}
+
+function clear(){
+    display.textContent = '';
 }
 
 function multiply() {

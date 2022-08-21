@@ -81,6 +81,9 @@ body {
 .wrapper__calculator--buttons .rows .combine li {
   margin: 0;
 }
+.wrapper__calculator--buttons .combine.red > * {
+  color: #E97088;
+}
 .wrapper__calculator--buttons .first-row li,
 .wrapper__calculator--buttons .fourth-row li {
   margin: auto 0.25em;
