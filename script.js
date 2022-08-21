@@ -10,107 +10,127 @@ document.addEventListener("keydown", handleKeydown);
 
 function handleKeydown(e) {
     console.log(e.key);
-    if (e.key >= 0 && e.key <= 9) {
-        display.textContent += e.key;
-    } else if (e.key == '+') {
-        if (!(isRepeatingOperations())) {
-            if (countNumbers() % 2 == 0) {
-                equals();
-            }
-            plus();
+    operate("keydown", e.key, e.key);
 
-        }
-    } else if (e.key == '-') {
-        if (!(isRepeatingOperations())) {
-            if (countNumbers() % 2 == 0) {
-                equals();
-            }
-            minus();
 
-        }
-    } else if (e.key == '*') {
-        if (!(isRepeatingOperations())) {
-            if (countNumbers() % 2 == 0) {
-                equals();
-            }
-            multiply();
-
-        }
-    } else if (e.key == '/') {
-        if (!(isRepeatingOperations())) {
-            if (countNumbers() % 2 == 0) {
-                equals();
-            }
-            divide();
-
-        }
-    } else if (e.key == '.') {
-        decimal();
-    } else if (e.key == 'Enter') {
-        equals();
-    } else if (e.key == 'Backspace') {
-        del();
-    }
 }
 
 function buttonClick(e) {
 
-    if (e.target.className === 'button number') {
+    let click = e.target.className;
+    let content = e.target.textContent;
 
-        if (displayIsEmpty()) {
-            display.textContent = '';
-        }
-
-        let number = e.target.textContent;
-        display.textContent += number;
-
-
-
-    } else if (e.target.className === 'button delete') {
-        del();
-    } else if(e.target.className === 'button clear'){
-        clear();
-    } else if (e.target.className === 'button decimal') {
-
-        decimal();
-    } else if (e.target.className === 'button plus') {
-        if (!(isRepeatingOperations())) {
-            if (countNumbers() % 2 == 0) {
-                equals();
-            }
-            plus();
-
-        }
-    } else if (e.target.className === 'button minus') {
-        if (!(isRepeatingOperations())) {
-            if (countNumbers() % 2 == 0) {
-                equals();
-            }
-            minus();
-        }
-    } else if (e.target.className === 'button multiply') {
-        if (!(isRepeatingOperations())) {
-            if (countNumbers() % 2 == 0) {
-                equals();
-            }
-            multiply();
-        }
-    } else if (e.target.className === 'button divide') {
-        if (!(isRepeatingOperations())) {
-            if (countNumbers() % 2 == 0) {
-                equals();
-            }
-            divide();
-        }
-    }
-    else if (e.target.className === 'button equals') {
-        equals();
-    };
+    console.log(click + content);
+    operate("click", click, content);
 
 
 }
 
-function clear(){
+function operate(type, action, content) {
+
+    let option = {
+        keydown: function (action, content) {
+            if (action >= 0 && action <= 9) {
+                display.textContent += action;
+            } else if (action == '+') {
+                if (!(isRepeatingOperations())) {
+                    if (countNumbers() % 2 == 0) {
+                        return equals();
+                    }
+                    return plus();
+
+                }
+            } else if (action == '-') {
+                if (!(isRepeatingOperations())) {
+                    if (countNumbers() % 2 == 0) {
+                        equals();
+                    }
+                    minus();
+
+                }
+            } else if (action == '*') {
+                if (!(isRepeatingOperations())) {
+                    if (countNumbers() % 2 == 0) {
+                        equals();
+                    }
+                    multiply();
+
+                }
+            } else if (action == '/') {
+                if (!(isRepeatingOperations())) {
+                    if (countNumbers() % 2 == 0) {
+                        equals();
+                    }
+                    divide();
+
+                }
+            } else if (action == '.') {
+                decimal();
+            } else if (action == 'Enter') {
+                equals();
+            } else if (action == 'Backspace') {
+                del();
+            }
+        },
+        click: function (action, content) {
+            if (action === 'button number') {
+
+                if (displayIsEmpty()) {
+                    display.textContent = '';
+                }
+
+                let number = action;
+                display.textContent += content;
+
+
+
+            } else if (action === 'button delete') {
+                del();
+            } else if (action === 'button clear') {
+                clear();
+            } else if (action === 'button decimal') {
+
+                decimal();
+            } else if (action === 'button plus') {
+                if (!(isRepeatingOperations())) {
+                    if (countNumbers() % 2 == 0) {
+                        equals();
+                    }
+                    plus();
+
+                }
+            } else if (action === 'button minus') {
+                if (!(isRepeatingOperations())) {
+                    if (countNumbers() % 2 == 0) {
+                        equals();
+                    }
+                    minus();
+                }
+            } else if (action === 'button multiply') {
+                if (!(isRepeatingOperations())) {
+                    if (countNumbers() % 2 == 0) {
+                        equals();
+                    }
+                    multiply();
+                }
+            } else if (action === 'button divide') {
+                if (!(isRepeatingOperations())) {
+                    if (countNumbers() % 2 == 0) {
+                        equals();
+                    }
+                    divide();
+                }
+            }
+            else if (action === 'button equals') {
+                equals();
+            };
+        }
+    };
+
+    option[type](action, content);
+}
+
+function clear() {
     display.textContent = '';
 }
 
