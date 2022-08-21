@@ -6,6 +6,52 @@ let decimalExists = false;
 
 buttons.forEach(button => button.addEventListener("click", buttonClick));
 
+document.addEventListener("keydown", handleKeydown);
+
+function handleKeydown(e) {
+    console.log(e.key);
+    if (e.key >= 0 && e.key <= 9) {
+        display.textContent += e.key;
+    } else if (e.key == '+') {
+        if (!(isRepeatingOperations())) {
+            if (countNumbers() % 2 == 0) {
+                equals();
+            }
+            plus();
+
+        }
+    } else if (e.key == '-') {
+        if (!(isRepeatingOperations())) {
+            if (countNumbers() % 2 == 0) {
+                equals();
+            }
+            minus();
+
+        }
+    } else if (e.key == '*') {
+        if (!(isRepeatingOperations())) {
+            if (countNumbers() % 2 == 0) {
+                equals();
+            }
+            multiply();
+
+        }
+    } else if (e.key == '/') {
+        if (!(isRepeatingOperations())) {
+            if (countNumbers() % 2 == 0) {
+                equals();
+            }
+            divide();
+
+        }
+    } else if (e.key == '.') {
+        decimal();
+    } else if (e.key == 'Enter') {
+        equals();
+    } else if (e.key == 'Backspace') {
+        del();
+    }
+}
 
 function buttonClick(e) {
 
@@ -68,6 +114,8 @@ function multiply() {
         //do nothing
     } else {
         display.textContent += '*';
+        decimalExists = false;
+
     }
 
 }
@@ -77,6 +125,8 @@ function divide() {
         //do nothing
     } else {
         display.textContent += '\u00F7';
+        decimalExists = false;
+
 
     }
 }
@@ -168,6 +218,7 @@ function plus() {
         //do nothing
     } else {
         display.textContent += '+';
+        decimalExists = false;
     }
 }
 
@@ -176,6 +227,7 @@ function minus() {
         //do nothing
     } else {
         display.textContent += '-';
+        decimalExists = false;
     }
 }
 
